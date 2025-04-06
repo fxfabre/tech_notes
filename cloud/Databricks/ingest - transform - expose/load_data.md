@@ -6,7 +6,7 @@
 SELECT *
 FROM read_files(
      '/volumes/catalog_name/schema_name/volume_name/file.csv',
-     format => 'csv',
+     format => 'CSV',
      header => true,
      inferSchema => true
 );
@@ -35,22 +35,25 @@ OPTIONS (
 ```
 
 
-
 ## Upload UI
 - Can upload CSV, JSON, Avro, Parquet, text files
 - To create a Table, or into a Unity Catalog Volume
 
 
 ## Copy Into
-- Load a file (CSV, JSON, Avro, Parquet, text) from (any ?) a cloud storage location
+- Load a file (CSV, JSON, Avro, Parquet, text) from a cloud storage location (any ?)
 - Can automatically handle schema changes
+- Use column `_metadata` to get some information for the file (file_name ...)
 - Idempotent operation : already loaded files are skipped
 
 ```sql
 COPY INTO my_delta_table
-FROM 'file_or_folder_path'
-FILEFORMAT = 'format'
-FORMAT_OPTIONS = ('header' = 'true', 'inferSchema' = 'true');
+FROM (
+    SELECT *, _metadata.file_name
+    FROM '/Volumes/catalog/schema/folder/'
+)
+FILEFORMAT = CSV
+FORMAT_OPTIONS ('header' = 'true', 'inferSchema' = 'true');
 ```
 
 ## Auto loader

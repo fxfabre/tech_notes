@@ -1,4 +1,4 @@
-import dbutils
+import dbutils  # available only on databricks : https://docs.databricks.com/aws/en/dev-tools/databricks-utils
 import spark
 
 
@@ -26,3 +26,7 @@ def crud_files():
 
     # Delete file
     dbutils.fs.rm(f"/Volumes/{catalog}/{schema}/volume_name/file_name.csv")
+
+
+def run_sql():
+    spark.sql("DROP TABLE IF EXISTS catalog.schema.table_name")

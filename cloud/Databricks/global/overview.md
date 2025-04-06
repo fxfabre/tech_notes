@@ -4,9 +4,6 @@
 - Extarnal layer : web users and API
 - **Control plane**
   - Unity catalog
-    - Metastore
-    - Access Control
-    - Workspace management
   - Web apps
   - Mosaic AI
   - Workflows
@@ -24,6 +21,29 @@
   - Storage (Delta lake)
     - S3, ADLS, GCS
 
+## Unity catalog
+- provides the following functionalities across Databricks workspaces.
+  - Metastore
+  - access control, auditing, lineage and data discovery
+- One security & governance model for structured / unstructured data + AI
+- Allow to connect with
+  - Cloud storage : Azure data lake storage, S3, GCS
+  - Catalog federation : Hive, AWS glue
+  - External compute platforms : Amazon Athena, Presto, Amazon EMR, trino, spark
+  - Data federation : redshift, snowflake, BigQuery, SQL DB
+
+## Metastore
+- top-level container for metadata
+- It registers metadata about data and AI assets and the permissions that govern access to them
+- You should have one metastore for each region in which you have workspaces
+- Hierarchy
+  - Level one
+    - Catalogs : used to mirror organizational units or software scopes
+    - Non data securable objects : credentials, external locations
+  - Level two : schemas (or databases)
+  - Level 3
+    - Volumes : unstructured, non-tabular data, managed or not
+    - Tables, Views, UDF, Models
 
 ## Databricks compute
 Runtimes : Enhanced with databricks Photon
@@ -44,7 +64,7 @@ Runtimes : Enhanced with databricks Photon
   - Pay as you go : no idle cluster time / no over provisioning
   - Idle capacity removed 10 min after last query
 
-## Data intellignece platform
+## Data intelligence platform
 - Build on the lakehouse paradigm
 - Layers :
   - Usage : workflows, Delta live tables, SQL, AI/BI dashboards and genie, Mosaic AI
@@ -61,14 +81,6 @@ Runtimes : Enhanced with databricks Photon
   - Databricks clean rooms
 - Partner connect
   - Many connectors with 450+ partners : Salesforce, SAP, Fivetrans ...
-
-## Unity catalog
-- One security & governance model for structured / unstructured data + AI
-- Allow to connect with
-  - Cloud storage : Azure data lake storage, S3, GCS
-  - Catalog federation : Hive, AWS glue
-  - External compute platforms : Amazon Athena, Presto, Amazon EMR, trino, spark
-  - Data federation : redshift, snowflake, BigQuery, SQL DB
 
 ## Databricks IQ
 - Natural language Interfaces

@@ -16,5 +16,7 @@
 ## Table versions
 - Display versions : `DESCRIBE HISTORY table_name;`
 - Query a previous version (version number 2) : 
-  - `SELECT * FROM table_name AS OF 2`
+  - `SELECT * FROM table_name VERSION AS OF 2`
   - `SELECT * FROM table_name@v2` (alternative syntax)
+- `RESTORE table_name TO VERSION AS OF 1`
+- `RESTORE table_name TO TIMESTAMPS AS OF `
