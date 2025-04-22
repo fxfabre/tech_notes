@@ -21,6 +21,20 @@
   - Storage (Delta lake)
     - S3, ADLS, GCS
 
+## Object hierarchy
+- Metastore : default location for data, managed by Databricks
+- Catalog
+- Schema
+- Data objects
+  - Table : managed or external
+    - Managed table : data stored inside the metastore
+    - External table : need storage credential
+  - View
+    - Temporary view
+    - Global temporary view
+    - Standard view
+  - Function
+
 ## Unity catalog
 - provides the following functionalities across Databricks workspaces.
   - Metastore

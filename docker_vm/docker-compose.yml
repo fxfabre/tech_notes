@@ -1,0 +1,42 @@
+version: "3.7"
+
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: dockerfiles/dev_env.dockerfile
+    container_name: container_name
+    restart: always
+    command: bash
+    ports:
+      - 5000:443
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+
+  notebook:
+    build:
+      context: .
+      dockerfile: dockerfiles/dev_env.dockerfile
+    container_name: my_notebook
+    command: jupyter lab --ip=0.0.0.0 --allow-root --no-browser --port=8890
+    ports:
+      - 8890:8890
+    volumes:
+      - $DATA_DIR:/data
+
+  redis:
+    image: redis:6.2.5-alpine
+    ports:
+      - 6379:6379
+    expose:
+      - 6379
+
+  elastic:
+    image: elasticsearch:7.14.1
+    container_name: bert_elastic
+    expose:
+      - 9200
+    environment:
+      - discovery.type=single-node
