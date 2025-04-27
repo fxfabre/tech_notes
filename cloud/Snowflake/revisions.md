@@ -71,5 +71,3 @@ Types d’abonnement + included features
   - customer key (tri secret secure), data specific regulation, DB failback
 - Virtual private Snwoflake
   - dedicated servers, off cloud, isolated from all others SF accounts
-
-

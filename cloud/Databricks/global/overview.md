@@ -23,17 +23,21 @@
 
 ## Object hierarchy
 - Metastore : default location for data, managed by Databricks
-- Catalog
-- Schema
+  - Created by Dbx admin
+  - A workspace have only 1 metastore
+- Catalog : a group of schemas
+- Schema (or Database)
 - Data objects
-  - Table : managed or external
+  - Table : Collection of structured (tabular) data
     - Managed table : data stored inside the metastore
-    - External table : need storage credential
+    - External table : need storage credential, data in external storage
   - View
     - Temporary view
     - Global temporary view
     - Standard view
   - Function
+    - UDF : Return a scalar value
+    - UDTF : return rows
 
 ## Unity catalog
 - provides the following functionalities across Databricks workspaces.
